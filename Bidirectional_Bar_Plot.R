@@ -58,10 +58,14 @@ df3 <- df2 %>%
 # Plot the data
 ggplot(df3, aes(x = name, y = value)) +
   geom_col(data = df3 %>% filter(index != "D"), aes(fill = index), width = 0.4,position = "dodge") +
+  #geom_col(data = df2 %>% filter(index != "D"), aes(fill = index), position = position_dodge(width = 0.2)) +
   geom_col(data = df3 %>% filter(index == "D"), color = "yellow", width = 0.3, alpha = 0.5, size = 1) +
+  #geom_col(data = df2 %>% filter(index == "D"), aes(fill = index), position = position_dodge(width = 0.2)) +
   geom_hline(yintercept = 100, linetype = "dashed", color = "red") +  # Adding horizontal line at y = 1
   scale_y_continuous(
     breaks = c(100 * c(2, 1.5, 1), 0, -200, -400, -600, -800),
     labels = c(2, 1.5, 1, 0, 200, 400, 600, 800)
   )  +
   theme_minimal()
+
+
