@@ -1,5 +1,23 @@
-    # Biplot_R
-    Mirror bar_plot using R
+# Bidirectional Bar Plot in R
+
+## Overview
+This R script generates a bidirectional bar plot using ggplot2, displaying bars above and below the x-axis for comparison. It transforms the data to create a mirror effect, where one group of bars is displayed above the x-axis while the other group is displayed below. The script utilizes the tidyverse packages (dplyr and tidyr) along with ggplot2 for data manipulation and visualization.
+
+## Features
+- Generates a bidirectional bar plot with bars above and below the x-axis for comparison.
+- Transforms the data to create a mirror effect, with one group of bars above and the other below the x-axis.
+- Utilizes the ggplot2 package for data visualization.
+- Adjusts the font size and styling of the plot elements for clarity.
+
+## Usage
+1. Ensure you have R and the required packages (ggplot2, dplyr, tidyr) installed.
+2. Download or clone the "Bidirectional_Bar_Plot.R" script to your local machine.
+3. Open the script in your preferred R environment (e.g., RStudio).
+4. Run the script to generate the bidirectional bar plot
+
+
+Adjust the upper axis to bring it in centre 
+
     library(dplyr)
     library(ggplot2)
     library(tidyr)
@@ -19,18 +37,18 @@
       pivot_longer(-c("variable")) %>%
       mutate(value = case_when(
         variable != "D" ~ value - (value * 2),
-    
-    # scale col D so it can have different scaling than A-C
-    variable == "D" ~ value * 100
-    ))
+        
+        # scale col D so it can have different scaling than A-C
+        variable == "D" ~ value * 100
+      ))
     ggplot(df2, aes(x = name, y = value, fill = variable)) +
       geom_col(position = "dodge") +
       scale_y_continuous(
         breaks = c(100 * c(2, 1.5, 1), 0, -200, -400, -600, -800),
         labels = c(2, 1.5, 1, 0, 200, 400, 600, 800)
-    ) 
-
-  Adjust the upper axis to bring it in centre 
+      ) 
+      
+Adjust the upper axis to bring it in centre 
 
     library(tidyverse)
     library(reshape2)
