@@ -57,6 +57,7 @@ df3 <- df2 %>%
 
 # Plot the data
 ggplot(df3, aes(x = name, y = value)) +
+  #geom_col(data = df2 %>% filter(index != "D"), aes(fill = index), width = 0.2) +#for stack bar plot
   geom_col(data = df3 %>% filter(index != "D"), aes(fill = index), width = 0.4,position = "dodge") +
   #geom_col(data = df2 %>% filter(index != "D"), aes(fill = index), position = position_dodge(width = 0.2)) +
   geom_col(data = df3 %>% filter(index == "D"), color = "yellow", width = 0.3, alpha = 0.5, size = 1) +
